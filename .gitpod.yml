@@ -14,6 +14,8 @@ tasks:
   - before: export NG_CLI_ANALYTICS=ci
   - init: echo n | npm i -g @angular/cli
   - command: >
+        npm install -g jshint typescript-eslint
+  - command: >
         mkdir -p /workspace/data && mongod --dbpath /workspace/data
   - command: >
       cd ./aplicacao-web &&
