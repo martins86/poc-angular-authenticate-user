@@ -34,5 +34,28 @@ npm install jsonwebtoken --save
 <br>
 <br>
 
+
+## Gerando massa com o faker
+
+```
+cd utils/
+
+node gen_products.js 
+node gen_people.js
+```
+
+# Confirmando massa
+
+```
+mongo
+
+Use authentication
+
+db.products.find({})
+```
+
+<br>
+<br>
+
 [open-gitpod-img]: https://gitpod.io/button/open-in-gitpod.svg
 [open-gitpod-url]: https://www.gitpod.io/#https://github.com/martins86/poc-angular-authenticate-user
