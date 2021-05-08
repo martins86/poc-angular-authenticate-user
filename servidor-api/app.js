@@ -11,7 +11,7 @@ app.use(cors());
 
 mongoose.connect(
     'mongodb://localhost:27017/authentication',
-    { useNewUrlParser: true }
+    { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 app.use('/api', api);
