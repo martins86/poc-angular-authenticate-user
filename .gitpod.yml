@@ -16,12 +16,16 @@ tasks:
   - command: >
         npm install -g jshint typescript-eslint
   - command: >
-        mkdir -p /workspace/data && mongod --dbpath /workspace/data
+        mkdir -p /workspace/data && 
+        mongod --dbpath /workspace/data
   - command: >
       cd ./aplicacao-web &&
       npm install
       sleep 6 &&
       ng serve --host 0.0.0.0 --disableHostCheck
+  - command: >
+      cd ./servidor-api &&
+      npm install
 
 # Github
 github:
