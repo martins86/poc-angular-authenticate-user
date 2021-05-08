@@ -44,7 +44,7 @@ node gen_products.js
 node gen_people.js
 ```
 
-# Confirmando massa
+## Confirmando massa
 
 ```
 mongo
