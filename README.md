@@ -34,11 +34,23 @@ npm install jsonwebtoken --save
 <br>
 <br>
 
+## Gerando database authentication
+
+```
+# inicial o shell
+mongo
+
+# mostra a lista de database
+show dbs
+
+# caso não tenha o authentication
+use authentication
+```
 
 ## Gerando massa com o faker
 
 ```
-cd utils/
+cd servidor-api/utils/
 
 node gen_products.js 
 node gen_people.js
@@ -49,9 +61,10 @@ node gen_people.js
 ```
 mongo
 
-Use authentication
+use authentication
 
 db.products.find({})
+it
 ```
 
 <br>

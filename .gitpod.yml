@@ -18,6 +18,11 @@ tasks:
   - command: >
         mkdir -p /workspace/data && 
         mongod --dbpath /workspace/data
+        sleep 6 &&
+        mongodb://localhost:27017/?readPreference=primary&appname=mongodb-vscode%200.5.0&ssl=false &&
+        mongo &&
+        show dbs &&
+        use authentication
   - command: >
       cd ./aplicacao-web &&
       npm install
