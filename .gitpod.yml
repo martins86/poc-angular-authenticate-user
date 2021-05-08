@@ -13,7 +13,13 @@ ports:
 tasks:
   - before: export NG_CLI_ANALYTICS=ci
   - init: echo n | npm i -g @angular/cli
-  - command: mkdir -p /workspace/data && mongod --dbpath /workspace/data
+  - command: >
+        mkdir -p /workspace/data && mongod --dbpath /workspace/data
+  - command: >
+      cd ./aplicacao-web &&
+      npm install
+      sleep 6 &&
+      ng serve --host 0.0.0.0 --disableHostCheck
 
 # Github
 github:
