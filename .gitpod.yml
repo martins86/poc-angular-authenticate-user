@@ -25,7 +25,7 @@ tasks:
       cd ./aplicacao-web &&
       npm install &&
       sleep 6 &&
-      ng serve --host 0.0.0.0 --disableHostCheck
+      ng serve --host 0.0.0.0 --disable-host-check
   - command: >
       cd ./servidor-api &&
       npm install
