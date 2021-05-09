@@ -1,3 +1,9 @@
+## Gerando um novo projeto web
+
+```
+ng new aplicacao-web --routing=true --strict=true --style=scss
+```
+
 # AplicacaoWeb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
