@@ -4,10 +4,15 @@ image:
 
 # Portas e Ações
 ports:
+  # Angular
   - port: 4200
     onOpen: open-preview
+  # MongoDb
   - port: 27017
     onOpen: ignore
+  # Api Node Express
+  - port: 3000
+    onOpen: open-preview
 
 # Tarefas na Inicialização
 tasks:
@@ -28,7 +33,9 @@ tasks:
       ng serve --host 0.0.0.0 --disable-host-check
   - command: >
       cd ./servidor-api &&
-      npm install
+      npm install &&
+      sleep 6 &&
+      node app.js
 
 # Github
 github:
