@@ -8,8 +8,8 @@
     "show-databases": "show dbs",
     "use-db": "use authentication",
     "start-db": "go-mongo && show-databases && use-db",
-    "start-data": "echo \"Adicionando dados: \" && cd utils/ && node gen_products.js && node gen_people.js && echo \"Data: 0.0.0.0:27017/api/ ou http://localhost:27017/api/\" ",
-    "start-api": "echo \"Api: 0.0.0.0:3000 ou http://localhost:3000/\" && node app.js"
+    "start-data": "echo \"Adicionando dados: \" && cd utils/ && node gen_products.js && node gen_people.js && echo \"Data: 0.0.0.0:3000/api/ ou http://localhost:3000/api/\" ",
+    "start-api": "echo \"Api: 0.0.0.0:3000/api/ ou http://localhost:3000/api/\" && node app.js"
   },
   "repository": {
     "type": "git",
