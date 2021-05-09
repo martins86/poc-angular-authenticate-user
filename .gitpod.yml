@@ -38,7 +38,8 @@ tasks:
   - command: >
       cd ./servidor-api &&
       gp await-port 27017 &&
-      npm run start-db &&
+      gp await-port 3000 &&
+      sleep 12 &&
       npm run start-data
 
 # Github
