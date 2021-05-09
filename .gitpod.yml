@@ -21,21 +21,12 @@ tasks:
   - command: >
         mkdir -p /workspace/data && 
         mongod --dbpath /workspace/data &&
-        sleep 6 &&
-        mongodb://localhost:27017/?readPreference=primary&appname=mongodb-vscode%200.5.0&ssl=false &&
-        mongo &&
-        show dbs &&
-        use authentication
   - command: >
       cd ./aplicacao-web &&
       npm install &&
-      sleep 6 &&
-      ng serve --host 0.0.0.0 --disable-host-check
   - command: >
       cd ./servidor-api &&
-      npm install &&
-      sleep 6 &&
-      node app.js
+      npm install
   - command: >
       gp await-port 4200 && gp preview $(gp url 4200)web/
       gp await-port 3000 && gp preview $(gp url 3000)api/
