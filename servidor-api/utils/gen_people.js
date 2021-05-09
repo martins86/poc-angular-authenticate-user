@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var faker = require("faker");
-var PersonModel = require("./../models/PersonModel");
+var mongoose = require('mongoose');
+var faker = require('faker');
+var PersonModel = require('./../models/PersonModel');
 
 mongoose.connect(
     'mongodb://localhost:27017/authentication',
@@ -26,7 +26,7 @@ async function addPeople(n) {
 
 addPeople(100).then(
     () => {
-        console.log("Data people created successfully...");
+        console.log('Data people created successfully...');
         mongoose.disconnect();
     }
 );

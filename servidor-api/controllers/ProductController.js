@@ -1,4 +1,4 @@
-var ProductModel = require("./../models/ProductModel");
+var ProductModel = require('./../models/ProductModel');
 
 var Controller = {
     all: function (req, res) {

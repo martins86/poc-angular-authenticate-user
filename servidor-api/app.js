@@ -1,9 +1,9 @@
-var express = require("express");
-var bodyparser = require("body-parser");
-var mongoose = require("mongoose");
-var cors = require("cors");
+var express = require('express');
+var bodyparser = require('body-parser');
+var mongoose = require('mongoose');
+var cors = require('cors');
 var app = express();
-var api = require("./routes/api");
+var api = require('./routes/api');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));

@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var faker = require("faker");
-var ProductModel = require("./../models/ProductModel");
+var mongoose = require('mongoose');
+var faker = require('faker');
+var ProductModel = require('./../models/ProductModel');
 
 mongoose.connect(
     'mongodb://localhost:27017/authentication',
@@ -25,7 +25,7 @@ async function addProducts(n) {
 
 addProducts(100).then(
     () => {
-        console.log("Data products created successfully...");
+        console.log('Data products created successfully...');
         mongoose.disconnect();
     }
 );

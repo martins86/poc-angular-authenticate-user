@@ -1,4 +1,4 @@
-var PersonModel = require("./../models/PersonModel");
+var PersonModel = require('./../models/PersonModel');
 
 var Controller = {
     all: function (req, res) {
