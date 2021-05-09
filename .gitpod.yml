@@ -36,6 +36,7 @@ tasks:
       gp await-port 3000 &&
       gp forward-port 3000
   - command: >
+      cd ./servidor-api &&
       gp await-port 27017 &&
       npm run start-db &&
       npm run start-data
