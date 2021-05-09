@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "go-mongo": "mongo",
+    "show-databases": "show dbs",
+    "use-db": "use authentication",
+    "start-db": "echo \"Iniciando MongoDb\" && go-mongo && show-databases && use-db",
+    "start-data": "echo \"Adicionando dados\" && cd utils/ && node gen_products.js && node gen_people.js",
+    "start-api": "echo \"Iniciando API\" && node app.js"
   },
   "repository": {
     "type": "git",
