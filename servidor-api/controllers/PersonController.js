@@ -1,9 +1,9 @@
 var PersonModel = require("./../models/PersonModel");
 
 var Controller = {
-    all: function(req, res) {
+    all: function (req, res) {
         PersonModel.find({}).lean().exec(
-            function(error, people) {
+            function (error, people) {
                 if (error) {
                     return res.json(error);
                 }

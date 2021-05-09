@@ -6,7 +6,7 @@ var app = express();
 var api = require("./routes/api");
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors());
 
 mongoose.connect(
@@ -17,7 +17,7 @@ mongoose.connect(
 app.use('/api', api);
 
 app.use(
-    function(req, res, next) {
+    function (req, res, next) {
         res.status(404).send('Not found');
     }
 );

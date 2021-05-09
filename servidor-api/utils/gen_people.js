@@ -9,7 +9,7 @@ mongoose.connect(
 
 async function addPeople(n) {
     try {
-        for(var i=0; i<n; i++) {
+        for (var i = 0; i < n; i++) {
             var peopple = new PersonModel();
             peopple.name = faker.name.firstName();
             peopple.country = faker.address.country();
@@ -21,11 +21,11 @@ async function addPeople(n) {
     catch (error) {
         console.error(error);
     }
-    
+
 }
 
 addPeople(100).then(
-    () => { 
+    () => {
         console.log("Data people created successfully...");
         mongoose.disconnect();
     }

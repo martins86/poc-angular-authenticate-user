@@ -9,7 +9,7 @@ mongoose.connect(
 
 async function addProducts(n) {
     try {
-        for(var i=0; i<n; i++) {
+        for (var i = 0; i < n; i++) {
             var product = new ProductModel();
             product.name = faker.commerce.productName();
             product.department = faker.commerce.department();
@@ -20,11 +20,11 @@ async function addProducts(n) {
     catch (error) {
         console.error(error);
     }
-    
+
 }
 
 addProducts(100).then(
-    () => { 
+    () => {
         console.log("Data products created successfully...");
         mongoose.disconnect();
     }
