@@ -22,9 +22,7 @@ tasks:
         mkdir -p /workspace/data && 
         mongod --dbpath /workspace/data &&
         gp await-port 27017 &&
-        gp forward-port 27017 &&
-        npm run start-db &&
-        npm run start-data
+        gp forward-port 27017
   - command: >
       cd ./aplicacao-web &&
       npm install &&
@@ -36,7 +34,11 @@ tasks:
       npm install &&
       npm run start-api &&
       gp await-port 3000 &&
-      gp forward-port 3000 
+      gp forward-port 3000
+  - command: >
+      gp await-port 27017 &&
+      npm run start-db &&
+      npm run start-data
 
 # Github
 github:
