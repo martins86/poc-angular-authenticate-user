@@ -6,13 +6,13 @@ image:
 ports:
   # Angular
   - port: 4200
-    onOpen: ignore
-  # MongoDb
+    onOpen: notify
+# MongoDb
   - port: 27017
-    onOpen: ignore
-  # Api Node Express
+    onOpen: notify
+# Api Node Express
   - port: 3000
-    onOpen: ignore
+    onOpen: notify
 
 # Tarefas na Inicialização
 tasks:
@@ -20,16 +20,17 @@ tasks:
   - init: echo n | npm i -g @angular/cli jshint typescript-eslint
   - command: >
         mkdir -p /workspace/data && 
-        mongod --dbpath /workspace/data &&
+        mongod --dbpath /workspace/data
   - command: >
       cd ./aplicacao-web &&
-      npm install &&
+      npm install
   - command: >
       cd ./servidor-api &&
       npm install
   - command: >
-      gp await-port 4200 && gp preview $(gp url 4200)web/
-      gp await-port 3000 && gp preview $(gp url 3000)api/
+      gp await-port 4200 && gp preview $(gp url 4200)web/ && gp forward-port 4200
+      gp await-port 3000 && gp preview $(gp url 3000)api/ && gp forward-port 3000
+      
 
 # Github
 github:
@@ -47,9 +48,6 @@ github:
 vscode:
   extensions:
     - mongodb.mongodb-vscode@0.5.0:f041958ce98090c95ed79a8a75b69c00
-    - dracula-theme.theme-dracula@2.22.3:736ab1bad936c53fd45bc2fdfbd6d6da
     - mikael.angular-beastcode@10.0.3:449d9b32ebd4a40b83eb70f9a2c28732
     - ecmel.vscode-html-css@1.9.1:23103121f682e8e5bbd2f7e5e55c8a6e
     - esbenp.prettier-vscode@6.3.2:13e527ae62035854197198eedd2bc84f
-    - tabnine.tabnine-vscode@3.2.17:16841d6c91c484eaeb3e800aedbc99fe
-    - richie5um2.vscode-sort-json@1.20.0:489466c0f3b034010814e86465d989b6
