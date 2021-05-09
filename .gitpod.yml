@@ -6,13 +6,13 @@ image:
 ports:
   # Angular
   - port: 4200
-    onOpen: open-preview
+    onOpen: ignore
   # MongoDb
   - port: 27017
     onOpen: ignore
   # Api Node Express
   - port: 3000
-    onOpen: open-preview
+    onOpen: ignore
 
 # Tarefas na Inicialização
 tasks:
@@ -36,6 +36,9 @@ tasks:
       npm install &&
       sleep 6 &&
       node app.js
+  - command: >
+      gp await-port 4200 && gp preview $(gp url 4200)web/
+      gp await-port 3000 && gp preview $(gp url 3000)api/
 
 # Github
 github:
