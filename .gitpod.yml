@@ -6,13 +6,13 @@ image:
 ports:
   # Angular
   - port: 4200
-    onOpen: notify
+    onOpen: ignore
 # MongoDb
   - port: 27017
-    onOpen: notify
+    onOpen: ignore
 # Api Node Express
   - port: 3000
-    onOpen: notify
+    onOpen: ignore
 
 # Tarefas na Inicialização
 tasks:
@@ -20,17 +20,23 @@ tasks:
   - init: echo n | npm i -g @angular/cli jshint typescript-eslint
   - command: >
         mkdir -p /workspace/data && 
-        mongod --dbpath /workspace/data
+        mongod --dbpath /workspace/data &&
+        gp await-port 27017 &&
+        gp forward-port 27017 &&
+        npm run start-db &&
+        npm run start-data
   - command: >
       cd ./aplicacao-web &&
-      npm install
+      npm install &&
+      npm run start-web &&
+      gp await-port 4200 &&
+      gp forward-port 4200
   - command: >
       cd ./servidor-api &&
-      npm install
-  - command: >
-      gp await-port 4200 && gp preview $(gp url 4200)web/ && gp forward-port 4200
-      gp await-port 3000 && gp preview $(gp url 3000)api/ && gp forward-port 3000
-      
+      npm install &&
+      npm run start-api &&
+      gp await-port 3000 &&
+      gp forward-port 3000 
 
 # Github
 github:
