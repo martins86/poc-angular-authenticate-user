@@ -23,7 +23,7 @@ async function addProducts(n) {
 
 }
 
-addProducts(100).then(
+addProducts(30).then(
     () => {
         console.log('Data products created successfully...');
         mongoose.disconnect();

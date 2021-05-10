@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlApiBase: 'http://localhost:3000/api'
+  urlApiBase: 'http://localhost:3000/api',
+  urlGitPod: 'https://3000-beige-albatross-1dk8j8so.ws-us04.gitpod.io/api'
 };
 
 /*

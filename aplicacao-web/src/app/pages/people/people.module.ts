@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
-const materialModule = [MatCardModule, MatTableModule];
+const materialModule = [MatListModule, MatDividerModule, MatIconModule];
 
 import { PeopleRoutingModule } from './people-routing.module';
 import { PeopleComponent } from './people.component';

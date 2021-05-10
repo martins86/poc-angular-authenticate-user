@@ -1,14 +1,19 @@
 <div>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Products</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div >
-        <ul>
-          <li *ngFor="let p of (products$ | async)">{{ p.name }}</li>
-        </ul>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <mat-list>
+    <div mat-subheader>Products</div>
+    <div *ngIf="(products$ | async) as products; else loading">
+      <mat-list-item *ngFor="let p of products">
+        <mat-icon mat-list-icon>add_shopping_cart</mat-icon>
+        <div mat-line> Name: {{ p.name }} - {{ p.price }}</div>
+        <div mat-line> Department: {{ p.department }} </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </div>
+    <ng-template #loading>
+      <mat-list-item>
+        <mat-icon mat-list-icon>sync</mat-icon>
+        <div mat-line> Loading... </div>
+      </mat-list-item>
+    </ng-template>
+  </mat-list>
 </div>
