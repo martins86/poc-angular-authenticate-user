@@ -10,12 +10,12 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class PersonService {
 
-readonly urlApi = 'api/';
+readonly urlApi = 'http://localhost:3000/api/people/';
 
   constructor(private http: HttpClient) { }
 
   getPeople(): Observable<DataPerson[]> {
-    return this.http.get<DataPerson[]>(`${this.urlApi}person`)
+    return this.http.get<DataPerson[]>(this.urlApi)
       .pipe(
         catchError(
           (e) => {
