@@ -11,7 +11,7 @@ ports:
   - port: 27017
     onOpen: ignore
 # Api Node Express
-  - port: 3000
+  - port: 9000
     onOpen: ignore
 
 # Tarefas na Inicialização
@@ -33,12 +33,12 @@ tasks:
       cd ./servidor-api &&
       npm install &&
       npm run start-api &&
-      gp await-port 3000 &&
-      gp forward-port 3000
+      gp await-port 9000 &&
+      gp forward-port 9000
   - command: >
       cd ./servidor-api &&
       gp await-port 27017 &&
-      gp await-port 3000 &&
+      gp await-port 9000 &&
       sleep 12 &&
       npm run start-data
 
