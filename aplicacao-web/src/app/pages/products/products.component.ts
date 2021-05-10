@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataProduct } from './shared/models/data-product.model';
+import { ProductService } from './shared/services/product.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-products',
+  providers: [ProductService],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
-  constructor() { }
+  products$: Observable<DataProduct[]>;
 
-  ngOnInit(): void {
+  constructor(private serviceProduct: ProductService) {
+    this.products$ = this.serviceProduct.getPeople();
   }
-
 }

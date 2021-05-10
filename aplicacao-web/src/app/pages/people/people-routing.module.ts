@@ -5,10 +5,6 @@ import { PeopleComponent } from './people.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'people'
-  },
-  {
-    path: 'people',
     component: PeopleComponent
   },
 ];
