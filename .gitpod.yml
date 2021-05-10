@@ -19,7 +19,7 @@ tasks:
   - before: >
       export NG_CLI_ANALYTICS=ci &&
       export CHROME_BIN=/usr/bin/chromium-browser
-      export API_ROOT_URL=$(gp url 3000)
+      export ROOT_URL=$(gp url 3000)
   - init: >
       echo n | npm i -g @angular/cli jshint typescript-eslint
   - command: >
