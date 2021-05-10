@@ -1,4 +1,4 @@
 {
-    "editor.autoSave": "on",
+    "editor.autoSave": "off",
     "python.pythonPath": "/usr/bin/python2"
 }
