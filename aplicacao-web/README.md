@@ -3,6 +3,39 @@
 ```
 ng new aplicacao-web --routing=true --strict=true --style=scss
 ```
+<br>
+<br>
+
+## Instalando dependências
+
+```
+ng add @angular/material
+```
+
+<br>
+<br>
+
+## Componentes
+
+```
+ng g m pages --routing
+
+ng g m pages/people   --routing
+ng g c pages/people
+ng g class pages/people/shared/models/data-person --type=model --skip-tests
+ng g s pages/people/shared/services/person
+ng g c pages/people/shared/components/mat-table-person
+
+ng g m pages/products   --routing
+ng g c pages/products
+ng g class pages/products/shared/models/data-product --type=model --skip-tests
+ng g s pages/products/shared/services/product
+ng g c pages/products/shared/components/mat-table-product
+
+```
+
+<br>
+<br>
 
 # AplicacaoWeb
 
