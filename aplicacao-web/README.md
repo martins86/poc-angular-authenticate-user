@@ -10,6 +10,7 @@ ng new aplicacao-web --routing=true --strict=true --style=scss
 
 ```
 ng add @angular/material
+npm install bootstrap
 ```
 
 <br>
@@ -31,6 +32,10 @@ ng g class pages/products/shared/models/data-product --type=model --skip-tests
 ng g s pages/products/shared/services/product
 
 ng g m core/auth --module app --routing
+ng g c core/auth/login
+ng g c core/auth/register
+ng g class core/auth/shared/models/data-user-session --type=model --skip-tests
+ng g s core/auth/shared/services/auth
 
 ```
 
