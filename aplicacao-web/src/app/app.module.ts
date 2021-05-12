@@ -11,6 +11,7 @@ const materialModule = [MatToolbarModule, MatIconModule, MatButtonModule];
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './core/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ...materialModule
+    ...materialModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
