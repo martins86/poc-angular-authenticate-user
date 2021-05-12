@@ -1,20 +1,32 @@
 <mat-toolbar>
   <div>
-    <button mat-icon-button>
+    <button mat-icon-button routerLink="/pages/people">
     <mat-icon>menu</mat-icon>
     </button>
     <span>AplicacaoWeb</span>
   </div>
-  <div>
-    <button mat-icon-button routerLink="/pages/people">
-      <mat-icon>people_alt</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/pages/products">
-      <mat-icon>shop</mat-icon>
-    </button>
+  <div class="d-flex justify-content-center">
+    <div>
+      <button mat-button routerLink="login">
+        <mat-icon>input</mat-icon>
+        &nbsp;Sign in
+      </button>
+      <button mat-button routerLink="register">
+        <mat-icon>person_add</mat-icon>
+        &nbsp;Sign up
+      </button>
+    </div>
+    <div>
+      <button mat-icon-button routerLink="/pages/people">
+        <mat-icon>people_alt</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/pages/products">
+        <mat-icon>shop</mat-icon>
+      </button>
+    </div>
   </div>
 </mat-toolbar>
-<div id="content">
+<div class="container pt-5 pb-5">
   <router-outlet></router-outlet>
 </div>
 
