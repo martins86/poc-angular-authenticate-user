@@ -16,7 +16,7 @@ readonly urlApi = environment.urlGitPod;
   constructor(private http: HttpClient) { }
 
   getPeople(): Observable<DataProduct[]> {
-    return this.http.get<DataProduct[]>(`${this.urlApi}/products`)
+    return this.http.get<DataProduct[]>(`${this.urlApi}/api/products`)
       .pipe(
         catchError(
           (e) => {
