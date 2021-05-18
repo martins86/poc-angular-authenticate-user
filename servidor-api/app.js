@@ -1,12 +1,14 @@
-var express = require('express');
-var bodyparser = require('body-parser');
-var mongoose = require('mongoose');
-var cors = require('cors');
-var app = express();
-var api = require('./routes/api');
+const express = require('express');
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const app = express();
 
-var port = 3000;
-var host = '0.0.0.0';
+const auth = require('./routes/auth');
+const api = require('./routes/api');
+
+const port = 3000;
+const host = '0.0.0.0';
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -22,6 +24,7 @@ mongoose.connect(
         () => console.log('MongoDB connection refused!')
     );
 
+app.use('/auth', auth);
 app.use('/api', api);
 
 app.use((req, res, next) => {
