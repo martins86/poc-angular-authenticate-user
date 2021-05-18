@@ -8,14 +8,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-const materialModule = [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule];
+const materialModule = [
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatIconModule,
+  MatSnackBarModule
+];
 
 import { AuthRoutingModule } from './auth-routing.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
 
 @NgModule({
   declarations: [
@@ -27,6 +35,10 @@ import { RegisterComponent } from './register/register.component';
     AuthRoutingModule,
     ReactiveFormsModule,
     ...materialModule
-  ]
+  ],
+  exports: [
+    LoginComponent,
+    RegisterComponent
+  ],
 })
 export class AuthModule { }

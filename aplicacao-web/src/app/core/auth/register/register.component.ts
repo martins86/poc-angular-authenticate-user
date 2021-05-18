@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { DataUserSession } from '../shared/models/data-user-session.model';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -51,13 +57,44 @@ export class RegisterComponent implements OnInit {
   'DF'
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     console.log(this.formRegister.value);
+    let newUser: DataUserSession = {
+      ...this.formRegister.value,
+      password: this.formRegister.value.passwordone
+    };
+
+    this.authService.registerUser(newUser)
+      .subscribe(
+        (userNew) => {
+          this.showSnackBar(
+            'Successfuly registered. use your credentials to sing in'
+            );
+          this.router.navigateByUrl('login');
+        },
+        (error) => {
+          console.error(error);
+          this.showSnackBar(error.error.message);
+        }
+      );
+  }
+
+  private showSnackBar(message: string): void {
+    this.snackBar.open(
+      message,
+      'OK',
+      { duration: 2000 }
+      );
   }
 
   private matchingPassword(group: FormGroup): any {
