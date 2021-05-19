@@ -27,4 +27,18 @@ export class AuthService {
         )
       );
   }
+
+  loginUser(credentials: { email: string, password: string }): Observable<DataUserSession> {
+    return this.http.post<DataUserSession>(
+      `${this.urlApi}/auth/login`, credentials
+      )
+      .pipe(
+        catchError(
+          (e) => {
+            console.error(e);
+            return throwError(e);
+          }
+        )
+      );
+  }
 }

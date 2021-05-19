@@ -1,7 +1,31 @@
-<div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <p>login works!</p>
-      </div>
-    </div>
+<div class="container login-form">
+  <form  [formGroup]="formLogin" (ngSubmit)="onSubmit()" >
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-sm">
+            <mat-form-field >
+              <input matInput formControlName="email" type="email"
+                  placeholder="E-mail" autocomplete="email" readonly="false">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <mat-form-field>
+              <input matInput formControlName="password" type="password"  
+                placeholder="Password" autocomplete="password">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" type="submit" [disabled]="!formLogin.valid">
+          <mat-icon>check</mat-icon>
+          Login
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
 </div>
