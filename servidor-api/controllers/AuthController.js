@@ -22,7 +22,7 @@ module.exports = {
                 );
             }
         }
-        catch(error) {
+        catch (error) {
             res.status(500).json(
                 { message: 'Error while saving the user', error: error}
             );
@@ -30,6 +30,34 @@ module.exports = {
     },
     
     login: (req, res) => {
+        const email = req.body.email;
+        const password = req.body.password;
         
+        UserModel.findOne({ email: email }).lean().exec(
+            (error, user) => {
+                if (error) {
+                    return res.status(500).json(
+                            { 
+                                message: 'Error while saving the user',
+                                error: error
+                            }
+                        );
+                }
+                
+                const auth_error = (password == '' || password == null || !user);
+                const validate_passowrd = bcrypt.compareSync(password,nuser.password);
+                
+                if (!auth_error) {
+                    if (validate_passowrd) {
+                        
+                    }
+                    return res.status(404).json(
+                        { 
+                            message: 'Wrong e-mail or password'
+                        }
+                    );
+                }
+            }
+        );
     }
 }
