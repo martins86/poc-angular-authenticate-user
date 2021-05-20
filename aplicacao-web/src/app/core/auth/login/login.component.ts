@@ -13,6 +13,8 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  hideLoading: boolean = true;
+
   formLogin = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -30,15 +32,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     const credentials = this.formLogin.value;
+    this.hideLoading = false;
     this.authService.loginUser(credentials)
       .subscribe(
         (userSession) => {
+          this.hideLoading = true;
           this.showSnackBar(
             'Logged in successfuly. Welcome ' + userSession.firstname + '!'
             );
           this.router.navigateByUrl('/');
         },
         (error) => {
+          this.hideLoading = true;
           console.error(error);
           this.showSnackBar(error.error.message);
         }

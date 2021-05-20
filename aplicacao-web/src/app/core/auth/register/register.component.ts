@@ -14,6 +14,8 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  hideLoading: boolean = true;
+
   formRegister = this.fb.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
@@ -73,16 +75,19 @@ export class RegisterComponent implements OnInit {
       ...this.formRegister.value,
       password: this.formRegister.value.passwordone
     };
+    this.hideLoading = false;
 
     this.authService.registerUser(newUser)
       .subscribe(
         (userNew) => {
+          this.hideLoading = true;
           this.showSnackBar(
             'Successfuly registered. use your credentials to sing in'
             );
           this.router.navigateByUrl('login');
         },
         (error) => {
+          this.hideLoading = true;
           console.error(error);
           this.showSnackBar(error.error.message);
         }
