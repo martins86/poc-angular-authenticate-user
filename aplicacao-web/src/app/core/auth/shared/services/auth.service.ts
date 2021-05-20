@@ -5,14 +5,18 @@ import { environment } from './../../../../../environments/environment';
 
 import { DataUserSession } from '../models/data-user-session.model';
 
-import { Observable, throwError, from } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError, AsyncSubject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   readonly urlApi = environment.urlGitPod;
+
+  private subjUser$: AsyncSubject<DataUserSession> = new AsyncSubject();
+  private subjLoggedIn$: AsyncSubject<boolean> = new AsyncSubject();
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +37,11 @@ export class AuthService {
       `${this.urlApi}/auth/login`, credentials
       )
       .pipe(
+        tap((userSession: DataUserSession) => {
+          sessionStorage.setItem('token', userSession.token);
+          this.subjLoggedIn$.next(true);
+          this.subjUser$.next(userSession);
+        }),
         catchError(
           (e) => {
             console.error(e);
@@ -40,5 +49,13 @@ export class AuthService {
           }
         )
       );
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    return this.subjLoggedIn$.asObservable();
+  }
+
+  getUserSession(): Observable<DataUserSession> {
+    return this.subjUser$.asObservable();
   }
 }
