@@ -9,6 +9,7 @@ export class DataUserSession {
         public address: string,
         public city: string,
         public state: string,
+        public token: string,
         public id?: number,
     ) {}
 }
