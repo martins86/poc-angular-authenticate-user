@@ -24,7 +24,7 @@ async function addPeople(n) {
 
 }
 
-addPeople(15).then(
+addPeople(5).then(
     () => {
         console.log('Data people created successfully...');
         mongoose.disconnect();
