@@ -1,6 +1,7 @@
 const UserModel = require('./../models/UserModel');
 const bcrypt = require('bcryptjs');
 const consts = require('./../consts');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     register: async (req, res) => {
@@ -49,7 +50,13 @@ module.exports = {
                 
                 if (!auth_error) {
                     if (validate_passowrd) {
-                        
+                        let token = jwt.sign(
+                                        { id: user.id }, 
+                                        consts.keyJWT, 
+                                        {expiresIn: consts.expiresJWT}
+                                    );
+                        delete user.password;
+                        return res.json({ ...user, token: token});
                     }
                     return res.status(404).json(
                         { 
