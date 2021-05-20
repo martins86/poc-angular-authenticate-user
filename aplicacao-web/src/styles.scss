@@ -5,13 +5,17 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
+.mat-snack-bar-container,
 .mat-list.mat-list-base,
 .mat-card {
     background-color: #212121;
     border: 1px solid #b0b0b0;
     border-radius: 5px;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.mat-snack-bar-container {
+    color: #FFFFFF;
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
