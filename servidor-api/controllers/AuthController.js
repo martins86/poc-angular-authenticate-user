@@ -46,7 +46,7 @@ module.exports = {
                 }
                 
                 const auth_error = (password == '' || password == null || !user);
-                const validate_passowrd = bcrypt.compareSync(password,nuser.password);
+                const validate_passowrd = bcrypt.compareSync(password,user.password);
                 
                 if (!auth_error) {
                     if (validate_passowrd) {
