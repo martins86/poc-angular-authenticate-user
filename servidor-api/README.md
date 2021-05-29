@@ -43,6 +43,7 @@ node gen_people.js
 ## Confirmando massa
 
 ```
+cd servidor-api
 mongo
 
 use authentication
