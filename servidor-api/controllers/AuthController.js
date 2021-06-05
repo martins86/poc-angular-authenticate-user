@@ -68,7 +68,7 @@ module.exports = {
         );
     },
     
-    check_token: (req, res) => {
+    check_token: (req, res, next) => {
         const token = req.get('Authorization');
         
         if (!token) {
