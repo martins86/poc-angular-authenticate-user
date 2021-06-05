@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,6 +26,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,4 +44,13 @@ import { RegisterComponent } from './register/register.component';
     RegisterComponent
   ],
 })
-export class AuthModule { }
+export class AuthModule {
+  static forRoot(): ModuleWithProviders<any> {
+    return {
+      ngModule: AuthModule,
+      providers: [
+        AuthInterceptor,
+      ]
+    };
+  }
+}
