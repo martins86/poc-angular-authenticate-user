@@ -55,7 +55,6 @@ export class AuthService {
     sessionStorage.clear();
     this.subjLoggedIn$.next(false);
     this.subjUser$.next(null as unknown as DataUserSession);
-    console.log(this.subjUser$);
   }
 
   isAuthenticated(): Observable<boolean> {

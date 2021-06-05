@@ -82,7 +82,7 @@ module.exports = {
                     return res.status(401)
                         .json({ message: 'Wrong token. Authentication error' });
                 }
-                next();
+                return next();
             }
         );
     },
