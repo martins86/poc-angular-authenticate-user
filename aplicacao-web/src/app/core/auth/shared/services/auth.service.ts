@@ -5,8 +5,8 @@ import { environment } from './../../../../../environments/environment';
 
 import { DataUserSession } from '../models/data-user-session.model';
 
-import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,29 @@ export class AuthService {
   }
 
   isAuthenticated(): Observable<boolean> {
+    const token = sessionStorage.getItem('token');
+    if (token && !this.subjLoggedIn$.value) {
+      return this.checkTokenValidation();
+    }
     return this.subjLoggedIn$.asObservable();
+  }
+
+  checkTokenValidation(): Observable<boolean> {
+    return this.http.get<DataUserSession>(`${this.urlApi}/auth/user`)
+      .pipe(
+        tap((user: DataUserSession) => {
+          if (user) {
+            sessionStorage.setItem('token', user.token);
+            this.subjLoggedIn$.next(true);
+            this.subjUser$.next(user);
+          }
+        }),
+        map((user: DataUserSession) => (user) ? true : false),
+        catchError((error) => {
+          this.logoutUser();
+          return of(false);
+        })
+      );
   }
 
   getUserSession(): Observable<DataUserSession> {
