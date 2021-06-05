@@ -66,5 +66,24 @@ module.exports = {
                 }
             }
         );
-    }
+    },
+    
+    check_token: (req, res) => {
+        const token = req.get('Authorization');
+        
+        if (!token) {
+            return res.status(401).json({ message: 'Token not found.' });
+        }
+        
+        jwt.verify(
+            token, consts.keyJWT, 
+            (error, decoded) => {
+                if (error || !decoded) {
+                    return res.status(401)
+                        .json({ message: 'Wrong token. Authentication error' });
+                }
+                next();
+            }
+        );
+    },
 }
